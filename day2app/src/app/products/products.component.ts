@@ -9,9 +9,14 @@ import { Component } from '@angular/core';
 export class productComponent{
 
     title :string = "product list";
+    show:boolean = true;
+    
+
+
+    
 
     products :any[] =[{
-        "_id":"5a05dacc734d1d68d42d31f3",
+        "_id":"5a05dacc734d1d68d42d31f3", 
         "productId":1,
         "productName":"Leaf Rake",
         "productCode":"GDN-0011",
@@ -62,5 +67,14 @@ export class productComponent{
             "imageUrl":"https://i.ibb.co/HD3RHMW/videogame.jpg"
         }   
 ]
+
+
+toggleimage():void{
+    this.show = !this.show;
+}
+
+
+
+}
     
 }

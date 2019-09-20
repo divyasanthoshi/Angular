@@ -1,22 +1,34 @@
-<div class="jumbotron">
-    <h1>Products page</h1>
-    <p>This is all about products .This is all about productsThis is all about productsThis is all about productsThis is all about productsThis is all about productsThis is all about productsThis is all about productsThis is all about productsThis is all about productsThis is all about products</p>
-</div>
-<div class="row">
-    
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:200px;background-color:teal;">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+           {{title}} 
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:200px;background-color:pink;">
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:200px;background-color:olive;">
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:200px;background-color:teal;">
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:200px;background-color:pink;">
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:200px;background-color:olive;">
-    </div>
-    <p *ngFor ="let prod of products">{{prod.productName}}</p>
+    <div class="panel-body">
+        <div class="table-responsive">
+         <table class="table">
+            <thead>
+                <tr>
+                    <th><button type="button" class="btn btn-primary" (click)="toggleimage()"  >{{show ? "hideimage":"showimage"}}</button></th>
+                    <th>name</th>
+                    <th>code</th>
+                    <th>date</th>
+                    <th>price</th>
+                    <th>rating</th>
+                </tr>
+            </thead>
+            <tbody>
 
-   
-</div>
+                <tr *ngFor = "let prod of products">
+                    <td *ngIf = "show" ><img  [src]="prod.imageUrl"/></td>
+                    <td>{{prod.productName | lowercase }}</td>
+                    <td>{{prod.productCode}}</td>
+                    
+                    <td>{{prod.releaseDate | date:"dd/MM/yyyy"}}</td>
+                    <td>{{prod.price | currency :'USD'}}</td>
+                    <td>{{prod.starRating}}</td>
+                </tr>
+
+            </tbody>
+
+         </table>   
+         </div>
+    </div> 

@@ -14,6 +14,7 @@
             </div>
             
             
+            
         </div>
         <hr/>
         <div class="row">
@@ -21,21 +22,25 @@
         </div>
         <div class="table-responsive">
             
-         <table class="table">
+         <table class="table" >
             <thead>
-                <tr>
-                    <th><button type="button" class="btn btn-primary" (click)="toggleimage()"  >{{show ? "hideimage":"showimage"}}</button></th>
-                    <th>name</th>
-                    <th>code</th>
-                    <th>date</th>
-                    <th>price</th>
-                    <th>rating</th>
-                </tr>
+                    <tr>
+                        <td>
+                             <button type="button" class="btn btn-primary" (click)="toggleimage()"  >{{show ? "hideimage":"showimage"}}</button>
+                        </td>
+                   
+                    
+                        <th>name</th>
+                        <th>code</th>
+                        <th>date</th>
+                        <th>price</th>
+                        <th>rating</th>
+                    </tr>
             </thead>
             <tbody>
 
-                <tr *ngFor = "let prod of products | search:userText">
-                    <td *ngIf = "show" ><img  [src]="prod.imageUrl"/></td>
+                <tr *ngFor = "let prod of products |search : userText ">
+                    <td><img *ngIf = "show"   [src]="prod.imageUrl"/></td>
                     <td>{{prod.productName | mypipe :"upper" }}</td>
                     <td>{{prod.productCode | mypipe :"upper"}}</td>
                     <td>{{prod.releaseDate | date:"dd/MM/yyyy"}}</td>

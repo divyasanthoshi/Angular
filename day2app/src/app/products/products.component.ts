@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Iproducts} from './product.model';
 
 
 @Component({
@@ -9,9 +10,10 @@ import { Component } from '@angular/core';
 export class productComponent{
 
     title :string = "product list";
-    show:boolean = true;
+    show:boolean = false;
     userText :string;
-
+    
+    
 
     
     
@@ -19,7 +21,7 @@ export class productComponent{
 
     
 
-    products :any[] =[{
+    products : Iproducts[]=[{
         "_id":"5a05dacc734d1d68d42d31f3", 
         "productId":1,
         "productName":"Leaf Rake",

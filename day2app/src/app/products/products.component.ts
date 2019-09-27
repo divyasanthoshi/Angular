@@ -10,6 +10,10 @@ export class productComponent{
 
     title :string = "product list";
     show:boolean = true;
+    userText :string;
+
+
+    
     
 
 
@@ -74,7 +78,14 @@ toggleimage():void{
 }
 
 
+}    
 
-}
+
+
+
+
+
+
+
+
     
-}

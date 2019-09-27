@@ -3,7 +3,24 @@
            {{title}} 
     </div>
     <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-1">
+                <label for="search">Search:</label>
+            </div>
+            <div class="col-md-9">    
+                <input type="text"  [(ngModel)] = "userText"/>
+                
+            </div>
+            
+            
+        </div>
+        <hr/>
+        <div class="row">
+            <h4>Number of Products search on the basis of : {{userText}} </h4>
+        </div>
         <div class="table-responsive">
+            
          <table class="table">
             <thead>
                 <tr>
@@ -17,16 +34,15 @@
             </thead>
             <tbody>
 
-                <tr *ngFor = "let prod of products">
+                <tr *ngFor = "let prod of products | search:userText">
                     <td *ngIf = "show" ><img  [src]="prod.imageUrl"/></td>
-                    <td>{{prod.productName | lowercase }}</td>
-                    <td>{{prod.productCode}}</td>
-                    
+                    <td>{{prod.productName | mypipe :"upper" }}</td>
+                    <td>{{prod.productCode | mypipe :"upper"}}</td>
                     <td>{{prod.releaseDate | date:"dd/MM/yyyy"}}</td>
-                    <td>{{prod.price | currency :'USD'}}</td>
+                    <td>{{prod.price | discountpipe | currency :'USD' }}</td>
                     <td>{{prod.starRating}}</td>
                 </tr>
-
+                
             </tbody>
 
          </table>   

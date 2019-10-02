@@ -10,6 +10,8 @@ import { productComponent } from './products/products.component';
 import { MyUpperPipe } from './products/myupper.pipe';
 import { DiscountPipe } from './products/discount.pipe';
 import {searchPipe } from './products/productfilter.pipe';
+import { starComponent } from './shared/star.component';
+import { ProductService } from './products/product.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,15 @@ import {searchPipe } from './products/productfilter.pipe';
     productComponent,
     MyUpperPipe,
     DiscountPipe,
-    searchPipe
+    searchPipe,
+    starComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,13 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
            {{title}} 
+           
     </div>
+    <h3 [ngStyle] = "{color : getColor()}"
+        [ngClass] = "{online: serverStatus === 'Online'}">Server Status is {{serverStatus}}</h3>
+    
     <div class="panel-body">
+            
 
         <div class="row">
             <div class="col-md-1">
@@ -18,11 +23,12 @@
         </div>
         <hr/>
         <div class="row">
-            <h4>Number of Products search on the basis of : {{userText}} </h4>
+            <h4 >Number of Products search on the basis of  {{userText}} : {{ (products |search :userText).length }}
+                 </h4>
         </div>
         <div class="table-responsive">
             
-         <table class="table" >
+         <table class="table" *ngIf = "products && products.length ;else noData">
             <thead>
                     <tr>
                         <td>
@@ -40,16 +46,23 @@
             <tbody>
 
                 <tr *ngFor = "let prod of products |search : userText ">
-                    <td><img *ngIf = "show"   [src]="prod.imageUrl"/></td>
+                    <td ><img [style.width.px] = "imagewidth"  *ngIf = "show"   [src]="prod.imageUrl"/></td>
                     <td>{{prod.productName | mypipe :"upper" }}</td>
-                    <td>{{prod.productCode | mypipe :"upper"}}</td>
-                    <td>{{prod.releaseDate | date:"dd/MM/yyyy"}}</td>
-                    <td>{{prod.price | discountpipe | currency :'USD' }}</td>
-                    <td>{{prod.starRating}}</td>
+                    <td style="color:teal">{{prod.productCode | mypipe :"upper"}}</td>
+                    <td >{{prod.releaseDate | date:"dd/MM/yyyy"}}</td>
+                    <td [ngStyle] = "{'background-color':prod.price > 20 ? 'Tomato':'Skyblue'}">
+                        {{prod.price | discountpipe | currency :'USD' }}
+                    </td>
+                    <td >
+                    <app-star [rating]= "prod.starRating" (starClicked)="datareceive($event)"></app-star>
+                    </td>
                 </tr>
                 
             </tbody>
 
-         </table>   
+         </table> 
+            <ng-template #noData>
+                <img src="../../assets/spinner.gif">
+            </ng-template>  
          </div>
     </div> 

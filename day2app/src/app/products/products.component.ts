@@ -21,6 +21,7 @@ export class productComponent{
     imagewidth:number = 100;
     userText :string;
     serverStatus :string = "Offline";
+    products : Iproducts[];
 
 
     constructor(private productservice : ProductService){
@@ -28,7 +29,8 @@ export class productComponent{
     }
 
     ngOnInit(){
-        this.products = this.productservice.getProduct();
+        this.productservice.getProduct()
+        .subscribe((data) => this.products = data);
     }
     
     
@@ -40,7 +42,7 @@ export class productComponent{
 
     
 
-    products : Iproducts[];
+   
 
 
 

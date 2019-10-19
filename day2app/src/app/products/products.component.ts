@@ -19,7 +19,7 @@ export class productComponent{
     title :string = "product list"; 
     show:boolean = false;
     imagewidth:number = 100;
-    userText :string;
+    userText :string = '';
     serverStatus :string = "Offline";
     products : Iproducts[];
 

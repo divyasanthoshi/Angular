@@ -14,7 +14,7 @@
                 <label for="search">Search:</label>
             </div>
             <div class="col-md-9">    
-                <input type="text"  [(ngModel)] = "userText"/>
+                <input type="text"  [(ngModel)] = "userText" />
                 
             </div>
             
@@ -47,7 +47,10 @@
 
                 <tr *ngFor = "let prod of products |search : userText ">
                     <td ><img [style.width.px] = "imagewidth"  *ngIf = "show"   [src]="prod.imageUrl"/></td>
-                    <td>{{prod.productName | mypipe :"upper" }}</td>
+                    <td><a [routerLink] = "['/products',prod.productId]"
+                        >
+                        {{prod.productName | mypipe :"upper" }}
+                    </a></td>
                     <td style="color:teal">{{prod.productCode | mypipe :"upper"}}</td>
                     <td >{{prod.releaseDate | date:"dd/MM/yyyy"}}</td>
                     <td [ngStyle] = "{'background-color':prod.price > 20 ? 'Tomato':'Skyblue'}">
@@ -66,3 +69,7 @@
             </ng-template>  
          </div>
     </div> 
+
+    <!--[queryParams]= "{name:prod.productName,
+                                         image : prod.imageUrl,
+                                         desc:prod.description}"-->
